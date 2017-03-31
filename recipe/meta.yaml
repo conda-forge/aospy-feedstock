@@ -1,6 +1,6 @@
 {% set name = "aospy" %}
 {% set version = "0.1.2" %}
-{% set sha256 = 253fd858a4771a7af487913d8d0082e0eb56ff38795db73ea4f414bf9e780ada %}
+{% set sha256 = "253fd858a4771a7af487913d8d0082e0eb56ff38795db73ea4f414bf9e780ada" %}
 
 package:
   name: {{ name|lower }}
