@@ -1,5 +1,6 @@
 {% set name = "aospy" %}
-{% set version = "0.1.1" %}
+{% set version = "0.1.2" %}
+{% set sha256 = "253fd858a4771a7af487913d8d0082e0eb56ff38795db73ea4f414bf9e780ada" %}
 
 package:
   name: {{ name|lower }}
@@ -8,17 +9,16 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  md5: f4282a1c41cc912b742711301bc0fad3
+  sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
   build:
     - python
     - setuptools
-    - pytest-runner
 
   run:
     - python
@@ -29,10 +29,12 @@ requirements:
     - toolz >=0.7.2
     - dask >=0.12
     - xarray >=0.9.1
+    - cloudpickle >=0.2.1
 
 test:
   imports:
     - aospy
+    - aospy.examples
     - aospy.test
     - aospy.test.data
     - aospy.test.data.objects
@@ -40,6 +42,7 @@ test:
 
   requires:
     - pytest >=2.7.1
+    - pytest-catchlog >=1.0
 
 about:
   home: http://github.com/spencerahill/aospy
@@ -54,7 +57,7 @@ about:
      lives and defining any functions of variables stored in that data
      you want to compute, aospy enables you to fire off an arbitrary
      number of calculations using that data.
-  doc_url: http://aospy..readthedocs.io/
+  doc_url: http://aospy.readthedocs.io/
   dev_url: https://github.com/spencerahill/aospy
 
 extra:
