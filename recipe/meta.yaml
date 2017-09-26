@@ -1,6 +1,6 @@
 {% set name = "aospy" %}
-{% set version = "0.1.2" %}
-{% set sha256 = "253fd858a4771a7af487913d8d0082e0eb56ff38795db73ea4f414bf9e780ada" %}
+{% set version = "0.2" %}
+{% set sha256 = "f6302407020dab5bb2b8da8c1361c95aa0595bc1272706238dce364ff1836f07" %}
 
 package:
   name: {{ name|lower }}
@@ -27,7 +27,8 @@ requirements:
     - pandas >=0.15.0
     - netcdf4 >=1.2
     - toolz >=0.7.2
-    - dask >=0.12
+    - dask >=0.14
+    - distributed >=1.16.1
     - xarray >=0.9.1
     - cloudpickle >=0.2.1
 
@@ -45,7 +46,7 @@ test:
     - pytest-catchlog >=1.0
 
 about:
-  home: http://github.com/spencerahill/aospy
+  home: https://github.com/spencerahill/aospy
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
@@ -57,7 +58,7 @@ about:
      lives and defining any functions of variables stored in that data
      you want to compute, aospy enables you to fire off an arbitrary
      number of calculations using that data.
-  doc_url: http://aospy.readthedocs.io/
+  doc_url: https://aospy.readthedocs.io/
   dev_url: https://github.com/spencerahill/aospy
 
 extra:
