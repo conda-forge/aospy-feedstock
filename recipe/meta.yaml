@@ -1,25 +1,21 @@
-{% set name = "aospy" %}
-{% set version = "0.2" %}
-{% set sha256 = "f6302407020dab5bb2b8da8c1361c95aa0595bc1272706238dce364ff1836f07" %}
+{% set version = "0.3.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: aospy
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/a/aospy/aospy-{{ version }}.tar.gz
+  sha256: 186c6c35955440e9a06d900d1cffc785c9bb20e6ed9852f905d387cf9062dd80
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv"
 
 requirements:
-  build:
+  host:
     - python
-    - setuptools
-
+    - pip
   run:
     - python
     - numpy >=1.7
@@ -31,6 +27,7 @@ requirements:
     - distributed >=1.16.1
     - xarray >=0.9.1
     - cloudpickle >=0.2.1
+    - cftime >=1.0.0
 
 test:
   imports:
@@ -40,10 +37,6 @@ test:
     - aospy.test.data
     - aospy.test.data.objects
     - aospy.utils
-
-  requires:
-    - pytest >=2.7.1
-    - pytest-catchlog >=1.0
 
 about:
   home: https://github.com/spencerahill/aospy
