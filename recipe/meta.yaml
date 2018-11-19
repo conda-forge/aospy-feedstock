@@ -1,4 +1,4 @@
-{% set version = "0.3.0" %}
+{% set version = "0.3.1" %}
 
 package:
   name: aospy
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/spencerahill/aospy/archive/v{{ version }}.tar.gz
-  sha256: 1811678ed05e15314f1750875409b2251aa389f3b40272bfe4028afd8968de9d
+  sha256: 57c16f869161f7a3c2fa754bbc2f576abae0caee682b2e9d5cc5ba1fa95bcfdb
 
 build:
-  number: 1
+  number: 0
   skip: True  # [py27]
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv"
 
