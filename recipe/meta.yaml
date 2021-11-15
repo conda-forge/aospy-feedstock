@@ -1,34 +1,35 @@
-{% set version = "0.3.1" %}
+{% set name = "aospy" %}{% set version = "0.3.1" %}
+
 
 package:
-  name: aospy
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/spencerahill/aospy/archive/v{{ version }}.tar.gz
+  url: https://github.com/spencerahill/aospy/archive/v0.3.1.tar.gz
   sha256: 57c16f869161f7a3c2fa754bbc2f576abae0caee682b2e9d5cc5ba1fa95bcfdb
 
 build:
-  number: 1002
-  skip: True  # [py27]
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv"
+  number: 0
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
   run:
-    - python
-    - numpy >=1.7
-    - scipy >=0.16
-    - pandas >=0.15.0
-    - netcdf4 >=1.2
-    - toolz >=0.7.2
-    - dask >=0.14
-    - distributed >=1.16.1
-    - xarray >=0.9.1
-    - cloudpickle >=0.2.1
+    - python >=3.6
     - cftime >=1.0.0
+    - cloudpickle >=0.2.1
+    - dask-core >=0.14
+    - distributed >=1.17.1
+    - netcdf4 >=1.2
+    - numpy >=1.7
+    - pandas >=0.15.0
+    - scipy >=0.16
+    - toolz >=0.7.2
+    - xarray >=0.10.6
 
 test:
   imports:
@@ -38,6 +39,10 @@ test:
     - aospy.test.data
     - aospy.test.data.objects
     - aospy.utils
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/spencerahill/aospy
