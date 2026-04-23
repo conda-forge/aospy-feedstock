@@ -11,16 +11,16 @@ source:
   sha256: 57c16f869161f7a3c2fa754bbc2f576abae0caee682b2e9d5cc5ba1fa95bcfdb
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - cftime >=1.0.0
     - cloudpickle >=0.2.1
     - dask-core >=0.14
@@ -44,6 +44,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/spencerahill/aospy
